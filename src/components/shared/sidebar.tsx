@@ -3,7 +3,14 @@
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { motion } from "framer-motion";
-import { Home, ArrowRightLeft, PlusCircle, History, Wallet, LogOut } from "lucide-react";
+import {
+  Home,
+  ArrowRightLeft,
+  PlusCircle,
+  History,
+  Wallet,
+  LogOut,
+} from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useAuthStore } from "@/store/useAuthStore";
 import Cookies from "js-cookie";
@@ -21,19 +28,19 @@ export function Sidebar() {
   const router = useRouter();
   const clearAuth = useAuthStore((state) => state.clearAuth);
 
-const handleLogout = async () => {
+  const handleLogout = async () => {
     try {
       // Hit endpoint backend agar server menghapus HttpOnly cookie
-      await api.post('/api/v1/logout');
+      await api.post("/api/v1/logout");
     } catch (error) {
       console.error("Gagal melakukan logout di sisi server");
     } finally {
       // Hapus access token dan flag sesi di sisi klien
-      Cookies.remove('access_token');
-      
+      Cookies.remove("access_token");
+
       // Bersihkan state Zustand
       clearAuth();
-      
+
       // Arahkan kembali ke halaman login
       router.push("/login");
     }
@@ -45,7 +52,7 @@ const handleLogout = async () => {
         <div className="p-2 bg-zinc-900 dark:bg-zinc-100 rounded-lg">
           <Wallet className="w-5 h-5 text-white dark:text-zinc-900" />
         </div>
-        <span className="text-lg font-semibold tracking-tight">WalletCore</span>
+        <span className="text-lg font-semibold tracking-tight">MyWallet</span>
       </div>
 
       <nav className="flex flex-col gap-1">
@@ -60,7 +67,7 @@ const handleLogout = async () => {
                   "flex items-center gap-3 px-3 py-2 rounded-md transition-all duration-200 relative group",
                   isActive
                     ? "text-zinc-900 dark:text-zinc-50"
-                    : "text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-50"
+                    : "text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-50",
                 )}
               >
                 {isActive && (

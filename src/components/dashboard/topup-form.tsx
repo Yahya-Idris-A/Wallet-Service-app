@@ -98,7 +98,7 @@ export function TopUpForm() {
               </motion.p>
             )}
 
-            <div className="flex gap-3 pt-2">
+            <div className="flex flex-col gap-3 pt-2">
               <Button 
                 type="button" 
                 variant="outline"

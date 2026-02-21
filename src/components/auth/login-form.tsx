@@ -12,12 +12,13 @@ import {
   Card,
   CardContent,
   CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useAuthStore } from "@/store/useAuthStore";
-import Cookies from "js-cookie";
+import Link from "next/link";
 
 export function LoginForm() {
   const router = useRouter();
@@ -147,6 +148,14 @@ export function LoginForm() {
             </Button>
           </form>
         </CardContent>
+        <CardFooter className="flex justify-center border-t border-zinc-100 dark:border-zinc-800/50 pt-4">
+          <p className="text-sm text-zinc-500 dark:text-zinc-400">
+            Belum punya akun?{" "}
+            <Link href="/register" className="font-medium text-zinc-900 hover:underline dark:text-zinc-50 transition-all">
+              Daftar di sini
+            </Link>
+          </p>
+        </CardFooter>
       </Card>
     </motion.div>
   );
